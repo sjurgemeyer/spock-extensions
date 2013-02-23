@@ -12,11 +12,12 @@ a list of items.  This can best be illustrated by an example:
     def "Should have implicit result field available for all tests"() {
         when: 
         //result is implicitly created by the annotation
-        def row = result[record]
+        def payment = result[record]
 
         then: 
-        assert row == value
-        assert row.size() == size
+        assert payment.baseAmount == baseAmount
+        assert payment.fees == fees
+        assert payment.tax == tax
 
         where:
         record | baseAmount | fees | tax
